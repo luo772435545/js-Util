@@ -1,0 +1,29 @@
+{
+  "name": "js-util",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luo772435545/js-Util.git"
+  },
+  "author": "gan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/luo772435545/js-Util/issues"
+  },
+  "homepage": "https://github.com/luo772435545/js-Util#readme",
+  "dependencies": {
+    "webpack": "^3.10.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1"
+  }
+}
