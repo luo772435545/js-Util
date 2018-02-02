@@ -17,7 +17,12 @@
 <script>
    /* console.log(window)
     console.log(window.util)*/
-
+  function toMoney (nub){
+       return parseFloat(nub.toFixed(10));
+   }
+   console.log(toMoney(0.1+0.2));
+   console.log(util.ut.toMoney(0.1+0.2))
+/*
    var str='  asd a1  ';
    console.log(str);
    var teg=/^\s*|\s*$/g;
@@ -27,6 +32,7 @@
     console.log(str.replace(teg,''));
     console.log(str.replace(reg,''));
 
+*/
 
 /*
     var gg={a:'cc',d:'gcc',j:'asc'};
@@ -87,13 +93,13 @@
         alert('弹出1')
     }).emitEvent("alert");*/
 
-    function getUrlParam(key) {
+  /*  function getUrlParam(key) {
         var url = window.location.search;
         console.log(url)
         var reg = new RegExp("(^|&)" + key + "=(.*)?(&|$)");
         var result = url.substr(1).match(reg);//去除?号
         return result ? decodeURIComponent(result[2]) : null;
-    }
+    }*/
    // console.log(getUrlParam('red'))
 
    /*  function addEvent(type, fn, capture) {
@@ -166,156 +172,61 @@
 
   console.log(c);*/
     //0 2 error
-  function  changeToChinese (Num) {
-      //判断如果传递进来的不是字符的话转换为字符
-      if(typeof Num == "number") {
-          Num = new String(Num);
-      };
-      Num = Num.replace(/,/g, "") //替换tomoney()中的“,”
-      Num = Num.replace(/ /g, "") //替换tomoney()中的空格
-      Num = Num.replace(/￥/g, "") //替换掉可能出现的￥字符
-      if(isNaN(Num)) { //验证输入的字符是否为数字
-          //alert("请检查小写金额是否正确");
-          return "";
-      };
-      //字符处理完毕后开始转换，采用前后两部分分别转换
-      var part = String(Num).split(".");
-      var newchar = "";
-      //小数点前进行转化
-      for(var i = part[0].length - 1; i >= 0; i--) {
-          if(part[0].length > 10) {
-              return "";
-              //若数量超过拾亿单位，提示
-          }
-          var tmpnewchar = ""
-          var perchar = part[0].charAt(i);
-          switch(perchar) {
-              case "0":
-                  tmpnewchar = "零" + tmpnewchar;
-                  break;
-              case "1":
-                  tmpnewchar = "壹" + tmpnewchar;
-                  break;
-              case "2":
-                  tmpnewchar = "贰" + tmpnewchar;
-                  break;
-              case "3":
-                  tmpnewchar = "叁" + tmpnewchar;
-                  break;
-              case "4":
-                  tmpnewchar = "肆" + tmpnewchar;
-                  break;
-              case "5":
-                  tmpnewchar = "伍" + tmpnewchar;
-                  break;
-              case "6":
-                  tmpnewchar = "陆" + tmpnewchar;
-                  break;
-              case "7":
-                  tmpnewchar = "柒" + tmpnewchar;
-                  break;
-              case "8":
-                  tmpnewchar = "捌" + tmpnewchar;
-                  break;
-              case "9":
-                  tmpnewchar = "玖" + tmpnewchar;
-                  break;
-          }
-          switch(part[0].length - i - 1) {
-              case 0:
-                  tmpnewchar = tmpnewchar + "元";
-                  break;
-              case 1:
-                  if(perchar != 0) tmpnewchar = tmpnewchar + "拾";
-                  break;
-              case 2:
-                  if(perchar != 0) tmpnewchar = tmpnewchar + "佰";
-                  break;
-              case 3:
-                  if(perchar != 0) tmpnewchar = tmpnewchar + "仟";
-                  break;
-              case 4:
-                  tmpnewchar = tmpnewchar + "万";
-                  break;
-              case 5:
-                  if(perchar != 0) tmpnewchar = tmpnewchar + "拾";
-                  break;
-              case 6:
-                  if(perchar != 0) tmpnewchar = tmpnewchar + "佰";
-                  break;
-              case 7:
-                  if(perchar != 0) tmpnewchar = tmpnewchar + "仟";
-                  break;
-              case 8:
-                  tmpnewchar = tmpnewchar + "亿";
-                  break;
-              case 9:
-                  tmpnewchar = tmpnewchar + "拾";
-                  break;
-          }
-          var newchar = tmpnewchar + newchar;
-      }
-      //小数点之后进行转化
-      if(Num.indexOf(".") != -1) {
-          if(part[1].length > 2) {
-              // alert("小数点之后只能保留两位,系统将自动截断");
-              part[1] = part[1].substr(0, 2)
-          }
-          for(i = 0; i < part[1].length; i++) {
-              tmpnewchar = ""
-              perchar = part[1].charAt(i)
-              switch(perchar) {
-                  case "0":
-                      tmpnewchar = "零" + tmpnewchar;
-                      break;
-                  case "1":
-                      tmpnewchar = "壹" + tmpnewchar;
-                      break;
-                  case "2":
-                      tmpnewchar = "贰" + tmpnewchar;
-                      break;
-                  case "3":
-                      tmpnewchar = "叁" + tmpnewchar;
-                      break;
-                  case "4":
-                      tmpnewchar = "肆" + tmpnewchar;
-                      break;
-                  case "5":
-                      tmpnewchar = "伍" + tmpnewchar;
-                      break;
-                  case "6":
-                      tmpnewchar = "陆" + tmpnewchar;
-                      break;
-                  case "7":
-                      tmpnewchar = "柒" + tmpnewchar;
-                      break;
-                  case "8":
-                      tmpnewchar = "捌" + tmpnewchar;
-                      break;
-                  case "9":
-                      tmpnewchar = "玖" + tmpnewchar;
-                      break;
-              }
-              if(i == 0) tmpnewchar = tmpnewchar + "角";
-              if(i == 1) tmpnewchar = tmpnewchar + "分";
-              newchar = newchar + tmpnewchar;
-          }
-      }
-      //替换所有无用汉字
-      while(newchar.search("零零") != -1)
-          newchar = newchar.replace("零零", "零");
-      newchar = newchar.replace("零亿", "亿");
-      newchar = newchar.replace("亿万", "亿");
-      newchar = newchar.replace("零万", "万");
-      newchar = newchar.replace("零元", "元");
-      newchar = newchar.replace("零角", "");
-      newchar = newchar.replace("零分", "");
-      if(newchar.charAt(newchar.length - 1) == "元") {
-          newchar = newchar + "整"
-      }
-      return newchar;
-  }
-   console.log(changeToChinese(1256.36))
+   var data=[
+       {
+           "id": 1,
+           "parentId": 0,
+           "accessName": "设备管理"
+       },
+       {
+           "id": 2,
+           "parentId": 0,
+           "accessName": "商户管理"
+       },
+       {
+           "id": 3,
+           "parentId": 2,
+           "accessName": "商户信息"
+       },
+       {
+           "id": 4,
+           "parentId": 2,
+           "accessName": "商户资料"
+       },
+       {
+           "id": 5,
+           "parentId": 2,
+           "accessName": "商户设备"
+       }
+   ];
+
+
+   /*function MenuDate(data) {
+       function search(data,p_id){
+           var temp = [];
+           for(var index in data){
+               if (data[index].parentId == p_id) {
+                   temp.push(data[index]);
+               }
+           }
+           return temp;
+       }
+       function test(p_id){
+           var arr = [];
+           var searchResult = search(data,p_id);
+           console.log(searchResult)
+           for(var i in searchResult){
+               arr.push({"accessName":searchResult[i].accessName,"children":test(searchResult[i].id)})
+           }
+           return arr;
+       }
+       return test(0)
+   }*/
+   // console.log(window.util.MenuDate(data));
+  //  console.log(MenuDate(data));
+    setTimeout(function () {
+        console.log(window.util.z7z8.MenuDate(data));
+    },2000)
 </script>
 </body>
 </html>
