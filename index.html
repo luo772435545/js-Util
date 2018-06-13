@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <script src="./dist/util.js"></script>
+   <!-- <script src="./dist/util.js"></script>-->
     <style>
         *{margin: 0;padding: 0}
         #ccc{margin: 50px;padding-top: 30px;width: 50px;height:40px;border: 0;display: block;background-color: red}
@@ -15,13 +15,33 @@
 </div>
 <div class="cod ppp">12312312</div>
 <script>
+
+
+
+    var reg=/^((?=[A-Za-z0-9])[-A-Za-z0-9]*[A-Za-z0-9]){1,38}$/;
+    var reg1=/(-)\1/;
+    var str='111q--wqwe';
+    console.log(reg.test(str));
+    console.log(reg1.test(str));
+
+
+
+
+
+
+
+
+
+
+
+
    /* console.log(window)
     console.log(window.util)*/
-  function toMoney (nub){
+ /* function toMoney (nub){
        return parseFloat(nub.toFixed(10));
    }
    console.log(toMoney(0.1+0.2));
-   console.log(util.ut.toMoney(0.1+0.2))
+   console.log(util.ut.toMoney(0.1+0.2))*/
 /*
    var str='  asd a1  ';
    console.log(str);
@@ -172,7 +192,7 @@
 
   console.log(c);*/
     //0 2 error
-   var data=[
+/*   var data=[
        {
            "id": 1,
            "parentId": 0,
@@ -198,7 +218,7 @@
            "parentId": 2,
            "accessName": "商户设备"
        }
-   ];
+   ];*/
 
 
    /*function MenuDate(data) {
@@ -224,9 +244,9 @@
    }*/
    // console.log(window.util.MenuDate(data));
   //  console.log(MenuDate(data));
-    setTimeout(function () {
+   /* setTimeout(function () {
         console.log(window.util.z7z8.MenuDate(data));
-    },2000)
+    },2000)*/
 </script>
 </body>
 </html>
