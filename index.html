@@ -17,15 +17,48 @@
 <script>
 
 
-
+       localStorage.setItem('timezoom','+4')
     var reg=/^((?=[A-Za-z0-9])[-A-Za-z0-9]*[A-Za-z0-9]){1,38}$/;
     var reg1=/(-)\1/;
     var str='111q--wqwe';
-    console.log(reg.test(str));
-    console.log(reg1.test(str));
+   /* console.log(reg.test(str));
+    console.log(reg1.test(str));*/
+/*   console.log(new Date('2018-08-31 01:57:56'))
+    function  getUniversalTime(date, type) { // UTC时间
+        if (date === null) return
+        let d = new Date(date)
+        let year = d.getUTCFullYear()
+        let month = d.getUTCMonth() + 1 < 10 ? '0' + (d.getUTCMonth() + 1) : d.getUTCMonth() + 1
+        let day = d.getUTCDate() < 10 ? '0' + d.getUTCDate() : d.getUTCDate()
+        let hours = d.getUTCHours() < 10 ? '0' + d.getUTCHours() : d.getUTCHours()
+        let minutes = d.getUTCMinutes() < 10 ? '0' + d.getUTCMinutes() : d.getUTCMinutes()
+        let seconds = d.getUTCSeconds() < 10 ? '0' + d.getUTCSeconds() : d.getUTCSeconds()
+        if (type === 'fulltime') {
+            return year + '-' + month + '-' + day + ' ' + hours + ':' + minutes + ':' + seconds
+        } else {
+            return year + '-' + month + '-' + day
+        }
+    }*/
+    console.log(getDataToLocalTime('2018-08-31 01:57:56','fulltime'))
 
 
 
+    function getDataToLocalTime (date, type) { // 本地时间
+        if (date === null) return null;
+        let b = new Date(date).getTime() + localStorage.getItem('timezoom') * 60 * 60 * 1000;
+        let d = new Date(b);
+        let year = d.getFullYear();
+        let month = d.getMonth() + 1 < 10 ? '0' + (d.getMonth() + 1) : d.getMonth() + 1;
+        let day = d.getDate() < 10 ? '0' + d.getDate() : d.getDate();
+        let hours = d.getHours() < 10 ? '0' + d.getHours() : d.getHours();
+        let minutes = d.getMinutes() < 10 ? '0' + d.getMinutes() : d.getMinutes();
+        let seconds = d.getSeconds() < 10 ? '0' + d.getSeconds() : d.getSeconds();
+        if (type === 'fulltime') {
+            return year + '-' + month + '-' + day + ' ' + hours + ':' + minutes + ':' + seconds;
+        } else {
+            return year + '-' + month + '-' + day;
+        }
+    }
 
 
 
