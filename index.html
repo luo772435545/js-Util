@@ -10,14 +10,103 @@
     </style>
 </head>
 <body>
-<div style="width: 300px;margin: 100px auto;">
-    <span id="ccc">123</span>
+<div style="width: 1200px;height: 2600px;margin: 0 auto;border: 1px solid #ddd">
+    <div style="width: 600px;height: 1200px;background-color: #e5e5e5;margin: 100px auto;">
+        <div style="width: 100px;height: 100px;position: sticky;top: 10px;background-color: red"></div>
+    </div>
 </div>
-<div class="cod ppp">12312312</div>
-
+<script src="./dist/util.js"></script>
 <script>
+let arr =[{a:'1',b:'2'},{a:'1',b:'4'},{a:'2'},{a:'4'},{a:'1'}];
+let obj = {a:'1',b:'2',c:'3',d:'4'};
+let obj1 = {a:'8',b:'9'};
 
-        function scrollTop(el, from = 0, to, duration = 500) {
+
+
+function cocy(obj,cocyObj) {
+    for(let key in obj){
+        obj[key] = cocyObj[key]
+    }
+}
+
+
+function repeatArrayObject (arr,key) {
+    let obj ={};
+    return  arr.reduce((i,n)=>{
+        if(!obj[n[key]]){
+            obj[n[key]]=true;
+            i.push(n);
+        }
+        return i
+    },[])
+}
+console.log(repeatArrayObject(arr,'a'))
+</script>
+<!--<script>
+
+    var canvas = {},
+        centerX = 0,
+        centerY = 0,
+        color = '',
+        containers = document.getElementsByClassName('material-design')
+    context = {},
+        element = {},
+        radius = 0,
+
+        requestAnimFrame = function () {
+            return (
+                window.requestAnimationFrame       ||
+                window.mozRequestAnimationFrame    ||
+                window.oRequestAnimationFrame      ||
+                window.msRequestAnimationFrame     ||
+                function (callback) {
+                    window.setTimeout(callback, 1000 / 60);
+                }
+            );
+        } (),
+
+        init = function () {
+            containers = Array.prototype.slice.call(containers);
+            for (var i = 0; i < containers.length; i += 1) {
+                canvas = document.createElement('canvas');
+                canvas.addEventListener('click', press, false);
+                containers[i].appendChild(canvas);
+                canvas.style.width ='100%';
+                canvas.style.height='100%';
+                canvas.width  = canvas.offsetWidth;
+                canvas.height = canvas.offsetHeight;
+            }
+        },
+
+        press = function (event) {
+            color = event.toElement.parentElement.dataset.color;
+            element = event.toElement;
+            context = element.getContext('2d');
+            radius = 0;
+            centerX = event.offsetX;
+            centerY = event.offsetY;
+            context.clearRect(0, 0, element.width, element.height);
+            draw();
+        },
+
+        draw = function () {
+            context.beginPath();
+            context.arc(centerX, centerY, radius, 0, 2 * Math.PI, false);
+            context.fillStyle = color;
+            context.fill();
+            radius += 2;
+            if (radius < element.width) {
+                requestAnimFrame(draw);
+            }
+        };
+
+    init();
+
+
+
+
+
+    function scrollTop(el, from = 0, to, duration = 500) {
             if (!window.requestAnimationFrame) {
                 window.requestAnimationFrame = (
                     window.webkitRequestAnimationFrame ||
@@ -56,7 +145,7 @@
        localStorage.setItem('timezoom','+4')
     var reg=/^((?=[A-Za-z0-9])[-A-Za-z0-9]*[A-Za-z0-9]){1,38}$/;
     var reg1=/(-)\1/;
-    var str='111q--wqwe';
+    var str='111q&#45;&#45;wqwe';
    /* console.log(reg.test(str));
     console.log(reg1.test(str));*/
 /*   console.log(new Date('2018-08-31 01:57:56'))
@@ -244,7 +333,7 @@
       console.log(c,d);
     })('avvas','aaa')
     */
-    
+
 /*    console.log(Object.keys(gg));
     console.log(Object.keys(gt));*/
   //  console.log(util.looseEqual(gg,gt))
@@ -316,6 +405,6 @@
    /* setTimeout(function () {
         console.log(window.util.z7z8.MenuDate(data));
     },2000)*/
-</script>
+</script>-->
 </body>
 </html>
