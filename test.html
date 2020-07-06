@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<!-- 先准备好一个input标签，然后设置type="file"，最后挂载一个onchange事件 -->
+<input class="upload-input" type="file" name="picture" onchange="upLoad(this)">
+<script>
+    /**
+     * input上传图片
+     * @param {HTMLInputElement} el
+     */
+    function upLoad(el) {
+        /** 上传文件 */
+        debugger
+        const file = el.files[0];
+        /** 上传类型数组 */
+        const types = ['image/jpg', 'image/png', 'image/jpeg', 'image/gif'];
+// 判断文件类型
+// 判断大小
+        if (file.size > 2 * 1024 * 1024) {
+            file.value = null;
+            return alert('上传的文件不能大于2M');
+        }
+        debugger
+        const formData = new FormData();    // 这个是传给后台的数据
+        formData.append('img', file);       // 这里'img'是跟后台约定好的字段
+        console.log(formData, file);
+// 最后传ajax给后台，这里我用上面的方法
+    }
+
+</script>
+</body>
+</html>

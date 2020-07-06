@@ -10,13 +10,26 @@
     </style>
 </head>
 <body>
-<div style="width: 1200px;height: 2600px;margin: 0 auto;border: 1px solid #ddd">
+<!--<div style="width: 1200px;height: 2600px;margin: 0 auto;border: 1px solid #ddd">
     <div style="width: 600px;height: 1200px;background-color: #e5e5e5;margin: 100px auto;">
         <div style="width: 100px;height: 100px;position: sticky;top: 10px;background-color: red"></div>
     </div>
 </div>
-<script src="./dist/util.js"></script>
+<script src="./dist/util.js"></script>-->
 <script>
+
+function randomStr ({ len = 32 }) {
+  const $chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
+  let newStr = ''
+  for (let i = 0;i++;i<len) {
+    newStr[i] = Math.random($chars.length*100)
+  }
+}
+</script>
+
+
+
+<!--<script>
 let arr =[{a:'1',b:'2'},{a:'1',b:'4'},{a:'2'},{a:'4'},{a:'1'}];
 let obj = {a:'1',b:'2',c:'3',d:'4'};
 let obj1 = {a:'8',b:'9'};
@@ -41,7 +54,7 @@ function repeatArrayObject (arr,key) {
     },[])
 }
 console.log(repeatArrayObject(arr,'a'))
-</script>
+</script>-->
 <!--<script>
 
     var canvas = {},
